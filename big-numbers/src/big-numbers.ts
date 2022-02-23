@@ -15,9 +15,13 @@ const multiply = (n1: BigNumber, n2: BigNumber): BigNumber => {
   for (let n1DigitId = n1.length; n1DigitId--;) {
     let carry = 0
     for (let n2DigitId = n2.length; n2DigitId--;) {
-      product[1 + n1DigitId + n2DigitId] += carry + Number(n1[n1DigitId]) * Number(n2[n2DigitId])
-      carry = Math.floor(product[1 + n1DigitId + n2DigitId] / 10)
-      product[1 + n1DigitId + n2DigitId] = product[1 + n1DigitId + n2DigitId] % 10
+      const resultId = 1 + n1DigitId + n2DigitId
+      const tempResult =
+        product[resultId] +
+        carry +
+        Number(n1[n1DigitId]) * Number(n2[n2DigitId])
+      carry = Math.floor(tempResult / 10)
+      product[resultId] = tempResult % 10
     }
     product[n1DigitId] += carry
   }
