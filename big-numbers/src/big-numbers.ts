@@ -16,10 +16,7 @@ const multiply = (n1: BigNumber, n2: BigNumber): BigNumber => {
     let carry = 0
     for (let n2DigitId = n2.length; n2DigitId--;) {
       const resultId = 1 + n1DigitId + n2DigitId
-      const tempResult =
-        product[resultId] +
-        carry +
-        Number(n1[n1DigitId]) * Number(n2[n2DigitId])
+      const tempResult = product[resultId] + carry + Number(n1[n1DigitId]) * Number(n2[n2DigitId])
       carry = Math.floor(tempResult / 10)
       product[resultId] = tempResult % 10
     }
@@ -28,7 +25,7 @@ const multiply = (n1: BigNumber, n2: BigNumber): BigNumber => {
   return product.join('').replace(/^0*(\d)/, '$1')
 }
 
-const toString = (n: BigNumber) => n.toString()
+const toString = (n: BigNumber) => n
 
 export const BigNumberOperation: CustomOperation<BigNumber> = {
   fromString,
